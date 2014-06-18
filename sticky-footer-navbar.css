@@ -35,6 +35,11 @@ body{
 .container p, .container h1, .container h2{
 	color: white!important;
 }
+/* sijie content */
+.content, #work, #about, #contact{
+	display: none;
+}
+
 /* sijie bunny */
 
 .bunny{
