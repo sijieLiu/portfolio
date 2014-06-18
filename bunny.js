@@ -1,4 +1,12 @@
 $(document).ready(function(){
+	
+	var t = $( window ).height() - 70; 
+	$(".bunny").css(
+		{
+			"height": t
+		}
+	);
+	
 	var animateDuration = 200;
 	var debounce = function (func, threshold, execAsap) {
 		var timeout;
@@ -31,37 +39,72 @@ $(document).ready(function(){
 		15)
 	);
 
+	var showBunnyAtBottom = function(){
+		$(".bunny").css(
+			{
+				"transform": "translateY(0px)",
+				"height": 330
+			}
+		);	
+	}
+	
+	var hideBunny = function(){
+		$(".bunny").css(
+			{
+				"transform": "translateY(330px)",
+				"height": 330
+			}
+		);	
+	}
+	
+	
+	var isContentShown = function(){
+		return $(".navbar-nav li").hasClass("active");
+	}
+	
 	$(".navbar-nav li").hover(
-		function(e){
+		function(e){	
+			if(isContentShown()){		
+				showBunnyAtBottom();
+			}
 			
 			if(!$(this).hasClass("active")){					
 	 			$("#eye-left-shine").css({opacity: 1, "transform": "scale(0.8,0.8)"});
-				$("#eye-right-shine").css({opacity: 1, "transform": "scale(0.8,0.8)"});//	height: 45px; width: 46px;
-				$("#eye-right-bow").css({opacity: 1});
-				$("#eye-left-bow").css({opacity: 1, bottom: "200px"});	
-			} else {
-				$("#eye-right-bow").css({opacity: 1});
-				$("#eye-left-bow").css({opacity: 1, bottom: "200px"});
+				$("#eye-right-shine").css({opacity: 1, "transform": "scale(0.8,0.8)"});
 			}
+			
+			$("#eye-left-bow").css({opacity: 1, top: "90px"});		
+			$("#eye-right-bow").css({opacity: 1});
 		},
 		function(e){	
  			$("#eye-left-shine").css({"transform": "scale(0.2,0.2)", opacity: 0});
 			$("#eye-right-shine").css({"transform": "scale(0.2,0.2)", opacity: 0});
-			$("#eye-left-bow").css({opacity: 0, bottom: "180px"});
+			$("#eye-left-bow").css({top: "111px", opacity: 0});
 			$("#eye-right-bow").css({opacity: 0});
+			if(isContentShown()){
+				hideBunny();
+			}
 		}
 	);
 		
 	/* content nav */
 	$(".navbar-nav li:not(.active) a, .navbar-brand").click(function(){
 		var id = $(this).data("id");
-		$(".content").hide();	
+		$(".content").fadeOut(500);	
 		$(".navbar-nav li").removeClass("active");
 		
 		if(id){
-			$("#"+id).show();
+			$("#"+id).fadeIn(1000);
 			$(this).parent().addClass("active");
-			// $(".bunny").css({"transform", ""})
+			showBunnyAtBottom();
+		}else{
+			var t = $( window ).height() - 70; 
+			$(".bunny").css(
+				{
+					"transform": "translateY(0px)",
+					"height": t
+				}
+			);
 		}
 	});
 	

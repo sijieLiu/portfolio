@@ -50,6 +50,9 @@ body{
 	right: 0;
 	height: 330px;
 	z-index: 100;
+	-webkit-transition-duration: 500ms;
+	-moz-transition-duration: 500ms;
+	transition-duration: 500ms;
 }
 #ear-top{
 /*	margin: 0 auto;
@@ -83,7 +86,7 @@ body{
 	width: 58px;
 	background: transparent url('pic/eye.png') no-repeat;
 	position: absolute;
-	bottom: 120px;
+	top: 168px;
 	right: 271px;
 }
 #eye-right{
@@ -91,7 +94,7 @@ body{
 	width: 58px;
 	background: transparent url('pic/eye.png') no-repeat;
 	position: absolute;
-	bottom: 120px;
+	top: 168px;
 	right: 80px;
 }
 
@@ -100,7 +103,7 @@ body{
 	height: 10px;
 	width: 80px;
 	background-color: black;
-	bottom: 150px;
+	top: 168px;
 	right: 60px;
 }
 #eye-left-line{
@@ -108,7 +111,7 @@ body{
 	height: 10px;
 	width: 80px;
 	background-color: black;
-	bottom: 150px;
+	top: 168px;
 	right: 251px;
 }
 
@@ -117,7 +120,7 @@ body{
 	width: 46px;
 	background: transparent url('pic/eye-bow.png') no-repeat;
 	position: absolute;
-	bottom: 180px;
+	top: 111px;
 	right: 95px;
 	opacity: 0;
 	-webkit-transition-duration: 500ms;
@@ -130,7 +133,7 @@ body{
 	width: 46px;
 	background: transparent url('pic/eye-bow.png') no-repeat;
 	position: absolute;
-	bottom: 180px;
+	top: 111px;
 	right: 285px;
 	opacity: 0;
 	-webkit-transition-duration: 500ms;
@@ -143,7 +146,7 @@ body{
 	width: 46px;
 	background: transparent url('pic/eye-shine.png') no-repeat;
 	position: absolute;
-	bottom: 122px;
+	top: 160px;
 	right: 100px;
 	opacity: 0;
 	-webkit-transition-duration: 500ms;
@@ -156,7 +159,7 @@ body{
 	width: 46px;
 	background: transparent url('pic/eye-shine.png') no-repeat;
 	position: absolute;
-	bottom: 122px;
+	top: 160px;
 	right: 290px;
 	opacity: 0;
 	-webkit-transition-duration: 500ms;
