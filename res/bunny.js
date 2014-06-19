@@ -103,19 +103,21 @@ $(document).ready(function(){
 		if(!$(this).hasClass("active")) {
 			var id = $(this).find("a").data("id");
 			var isAnyContentShown = isContentShown();
-			if(isAnyContentShown){		
-				$(".content").hide();	
-				$(".navbar-nav li").removeClass("active");
-				showBunnyOnTop();
-			}
-			
-			if(id){
-				if(isAnyContentShown){
-					$("#"+id).fadeIn(animateDuration, function() {
-	    				// Animation complete
+			if(isAnyContentShown){ // switch tabs		
+				var $activeContent = $("#" + $(".navbar-nav li.active a").data("id"));
+				$activeContent.fadeOut(animateDuration, function(){
+					if(id){
+						$("#"+id).fadeIn(animateDuration);
 						hideBunny();
-	  				});
-				} else {
+						$(this).addClass("active");
+					}
+				});
+				showBunnyOnTop();
+				$(".navbar-nav li").removeClass("active");
+			}
+		
+			if(id){	
+				if(!isAnyContentShown) {
 					$("#"+id).fadeIn(animateDuration);
 					hideBunny();
 				}
