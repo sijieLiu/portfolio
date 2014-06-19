@@ -93,8 +93,8 @@ $(document).ready(function(){
 			$("#eye-left-bow").css({top: "111px", opacity: 0});
 			$("#eye-right-bow").css({opacity: 0});
 			// if(isContentShown()){
-// 				hideBunny();
-// 			}
+			// 	hideBunny();
+			// }
 		}
 	);
 		
@@ -110,7 +110,6 @@ $(document).ready(function(){
 				$("#"+id).fadeIn(1000, function() {
     				// Animation complete
 					hideBunny();
-					//showBunnyAtBottom();
   				});
 				$(this).addClass("active");
 			}else{

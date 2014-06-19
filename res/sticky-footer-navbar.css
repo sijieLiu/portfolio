@@ -43,6 +43,11 @@ body{
 	display: none;
 }
 
+
+.content{
+	padding-bottom: 80px;
+	
+}
 #work img{
 	border: 2px solid white;
 	margin: 0 10px 10px 0;
