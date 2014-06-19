@@ -99,20 +99,20 @@ $(document).ready(function(){
 	);
 		
 	/* content nav */
-	$(".navbar-nav li:not(.active) a, .navbar-brand").click(function(){
-		var id = $(this).data("id");
-		$(".content").fadeOut(500);	
-		$(".navbar-nav li").removeClass("active");
-		
-		if(id){
-			$("#"+id).fadeIn(1000);
-			$(this).parent().addClass("active");
-			//showBunnyAtBottom();
-			hideBunny();
-		}else{
-			showBunnyOnTop();
+	$(".navbar-nav li, .navbar-brand").click(function(){
+		if(!$(this).hasClass("active")) {
+			var id = $(this).find("a").data("id");
+			$(".content").fadeOut(500);	
+			$(".navbar-nav li").removeClass("active");
+			
+			if(id){
+				$("#"+id).fadeIn(1000);
+				$(this).addClass("active");
+				hideBunny();
+			}else{
+				showBunnyOnTop();
+			}
 		}
 	});
-	
 	
 });
