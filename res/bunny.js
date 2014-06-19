@@ -7,7 +7,7 @@ $(document).ready(function(){
 		}
 	);
 	
-	var animateDuration = 200;
+	var animateDuration = 500;
 	var debounce = function (func, threshold, execAsap) {
 		var timeout;
 
@@ -102,15 +102,23 @@ $(document).ready(function(){
 	$(".navbar-nav li, .navbar-brand").click(function(){
 		if(!$(this).hasClass("active")) {
 			var id = $(this).find("a").data("id");
-			$(".content").hide();	
-			$(".navbar-nav li").removeClass("active");
-			showBunnyOnTop();
+			var isAnyContentShown = isContentShown();
+			if(isAnyContentShown){		
+				$(".content").hide();	
+				$(".navbar-nav li").removeClass("active");
+				showBunnyOnTop();
+			}
 			
 			if(id){
-				$("#"+id).fadeIn(1000, function() {
-    				// Animation complete
+				if(isAnyContentShown){
+					$("#"+id).fadeIn(animateDuration, function() {
+	    				// Animation complete
+						hideBunny();
+	  				});
+				} else {
+					$("#"+id).fadeIn(animateDuration);
 					hideBunny();
-  				});
+				}
 				$(this).addClass("active");
 			}else{
 				showBunnyOnTop();
