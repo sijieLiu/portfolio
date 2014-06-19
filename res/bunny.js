@@ -7,7 +7,7 @@ $(document).ready(function(){
 		}
 	);
 	
-	var animateDuration = 500;
+	var animateDuration = 1000;
 	var debounce = function (func, threshold, execAsap) {
 		var timeout;
 
@@ -63,8 +63,6 @@ $(document).ready(function(){
 			{
 				"transform": "translateY(0px)",
 				"height": t,
-				"width": "100%",
-				"left": 0
 			}
 		);	
 	}
@@ -125,7 +123,20 @@ $(document).ready(function(){
 			}else{
 				showBunnyOnTop();
 			}
+			
+			$(".navbar-collapse").collapse('hide');
 		}
 	});
+	
+	$(window).resize(function(){
+		if(!isContentShown()) {
+			var t = $( window ).height() - 70; 
+			$(".bunny").css(
+				{
+					"height": t
+				}
+			);
+		}
+	})
 	
 });
