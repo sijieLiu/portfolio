@@ -43,7 +43,7 @@ $(document).ready(function(){
 		$(".bunny").css(
 			{
 				"transform": "translateY(0px)",
-				"height": 330
+				"height": 330,
 			}
 		);	
 	}
@@ -52,11 +52,22 @@ $(document).ready(function(){
 		$(".bunny").css(
 			{
 				"transform": "translateY(330px)",
-				"height": 330
+				"height": 330,
 			}
 		);	
 	}
 	
+	var showBunnyOnTop = function(){
+		var t = $( window ).height() - 70; 
+		$(".bunny").css(
+			{
+				"transform": "translateY(0px)",
+				"height": t,
+				"width": "100%",
+				"left": 0
+			}
+		);	
+	}
 	
 	var isContentShown = function(){
 		return $(".navbar-nav li").hasClass("active");
@@ -96,15 +107,10 @@ $(document).ready(function(){
 		if(id){
 			$("#"+id).fadeIn(1000);
 			$(this).parent().addClass("active");
-			showBunnyAtBottom();
+			//showBunnyAtBottom();
+			hideBunny();
 		}else{
-			var t = $( window ).height() - 70; 
-			$(".bunny").css(
-				{
-					"transform": "translateY(0px)",
-					"height": t
-				}
-			);
+			showBunnyOnTop();
 		}
 	});
 	
