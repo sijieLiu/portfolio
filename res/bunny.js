@@ -147,21 +147,23 @@ $(document).ready(function(){
 	    inputsIndex = 0,
 		i = 0,
 	    isTag,
-	    text;
+	    text,
+		timeOut;
 
 	var type = function() {
+		if(timeOut && $("#typewriter").is(":hover")){ // if hovering take another 2000 ms
+			setTimeout(type, 2000);
+			return;
+		}
+		timeOut = null;
 	    text = inputs[inputsIndex].slice(0, ++i);
 	    if (text === inputs[inputsIndex]) {
-			if($("#typewriter").is(":hover")){ // if hovering take another 6000 ms
-				setTimeout(type, 2000);
-				return;
-			}
 			inputsIndex++;
 			i = 0;
 			if(inputsIndex == inputs.length){ // loop
 				inputsIndex = 0;
 			}
-	    	setTimeout(type, 6000);
+	    	timeOut = setTimeout(type, 6000);
 			return;
 	    }
     
