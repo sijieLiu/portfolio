@@ -152,6 +152,10 @@ $(document).ready(function(){
 	var type = function() {
 	    text = inputs[inputsIndex].slice(0, ++i);
 	    if (text === inputs[inputsIndex]) {
+			if($("#typewriter").is(":hover")){ // if hovering take another 6000 ms
+				setTimeout(type, 2000);
+				return;
+			}
 			inputsIndex++;
 			i = 0;
 			if(inputsIndex == inputs.length){ // loop
