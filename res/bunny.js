@@ -157,7 +157,7 @@ $(document).ready(function(){
 			if(inputsIndex == inputs.length){ // loop
 				inputsIndex = 0;
 			}
-	    	setTimeout(type, 3000);
+	    	setTimeout(type, 6000);
 			return;
 	    }
     
