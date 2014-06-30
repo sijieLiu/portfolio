@@ -4,8 +4,18 @@ html{
 }
 
 body{
-	background: black;
+	background: white;
 	height: 100%;
+   
+	background-image: url('../pic/subtle_dots_@2X.png');    
+   
+}
+a{
+	color: black;
+}
+a:hover{
+	color: black;
+	text-decoration: none;
 }
 .page-header{
 	border: none;
@@ -17,8 +27,9 @@ body{
 	padding-top: 15px;
 }
 .navbar-default, .navbar-header{
-	background: black;
+	background: white;
 	border: none;
+	background-image: url('../pic/subtle_dots_@2X.png');    
 }
 
 .navbar-brand{
@@ -29,34 +40,34 @@ body{
 	color: white!important;	
 	background: black!important;
 }
-.container {
-	padding-top: 70px;
+.navbar-nav>li.active a{
+	border-bottom: 2px solid white;
+}
+.main .container:first-of-type{
+	padding-top: 235px;	
 }
 .container img{
 	max-width:400px;
 }
 .container p, .container h1, .container h2, #contact p a{
-	color: white!important;
+	color: black!important;
 }
 /* sijie content */
-.content, #work, #about, #contact{
+#work{
 	display: none;
 }
 
 
-.content{
-	padding-bottom: 80px;
-	
-}
+
 #work img{
-	border: 2px solid white;
+	border: 1px solid white;
 	margin: 0 10px 10px 0;
 }
 
 /* sijie bunny */
 
 .bunny{
-	background: white;
+	background: transparent;
 	position: fixed;
 	bottom: 0;
 	right: 0;
@@ -91,7 +102,59 @@ body{
 	height: 75px;
 	background: transparent url('../pic/ear-l-t.png') no-repeat;
 	position: absolute;
-	left: 0px;
+	left: 0px;element.style {
+}
+#work img {
+border: 1px solid white;
+margin: 0 10px 10px 0;
+}
+.container img {
+max-width: 400px;
+}
+img {
+vertical-align: middle;
+}
+img {
+border: 0;
+}
+* {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+img[Attributes Style] {
+width: 100%;
+}
+Pseudo ::before element
+:before, :after {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+Pseudo ::after element
+:before, :after {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+Inherited from body
+body {
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size: 14px;
+line-height: 1.42857143;
+color: #333;
+background-color: #fff;
+}
+Inherited from html
+html {
+font-size: 62.5%;
+-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+html {
+font-family: sans-serif;
+-ms-text-size-adjust: 100%;
+-webkit-text-size-adjust: 100%;
+}
 	top: 13px;
 }
 #ear-left-bottom{
@@ -99,7 +162,7 @@ body{
 	height: 75px;
 	background: transparent url('../pic/ear-l-b.png') no-repeat;
 	position: absolute;
-	right: 354px;
+	left: 0px;
 	top: 50px;
 }
 #ear-right{
@@ -110,20 +173,76 @@ body{
 	right: 0px;
 	top: 13px;
 }
+
+
+/*face*/
+#face{
+	position: relative;
+	overflow: auto;
+	height: 200px;
+	margin: auto;
+/*	margin-top: 30px;
+*/	-moz-transform: translateY(-30%);
+	background: rgb(255, 204, 0);
+	border: 10px solid black;
+	border-bottom: none;
+}
+#head-hit{
+	height: 63px;
+	width: 59px;
+	background: transparent url('../pic/headhit.png') no-repeat;
+	position: absolute;
+	top: 38px;
+	right: 312px;
+	display: none;
+}
 #eye-left{
 	height: 40px;
 	width: 58px;
 	background: transparent url('../pic/eye.png') no-repeat;
 	position: absolute;
-	top: 168px;
+	top: 88px;
 	right: 271px;
 }
+#eye-left-line{
+	position: absolute;
+	height: 10px;
+	width: 80px;
+	background-color: black;
+	top: 88px;
+	right: 251px;
+}
+/*#eye-left-bow{
+	height: 31px;
+	width: 46px;
+	background: transparent url('../pic/eye-bow.png') no-repeat;
+	position: absolute;
+	top: 71px;
+	right: 285px;
+	opacity: 0;
+	-webkit-transition-duration: 500ms;
+	-moz-transition-duration: 500ms;
+	transition-duration: 500ms;
+}*/
+#eye-left-shine{
+	height: 45px;
+	width: 46px;
+	background: transparent url('../pic/eye-shine.png') no-repeat;
+	position: absolute;
+	top: 80px;
+	right: 290px;
+	opacity: 0;
+	-webkit-transition-duration: 500ms;
+	-moz-transition-duration: 500ms;
+	transition-duration: 500ms;
+}
+
 #eye-right{
 	height: 40px;
 	width: 58px;
 	background: transparent url('../pic/eye.png') no-repeat;
 	position: absolute;
-	top: 168px;
+	top: 88px;
 	right: 80px;
 }
 
@@ -132,50 +251,29 @@ body{
 	height: 10px;
 	width: 80px;
 	background-color: black;
-	top: 168px;
+	top: 88px;
 	right: 60px;
 }
-#eye-left-line{
-	position: absolute;
-	height: 10px;
-	width: 80px;
-	background-color: black;
-	top: 168px;
-	right: 251px;
-}
 
-#eye-right-bow{
+/*#eye-right-bow{
 	height: 31px;
 	width: 46px;
 	background: transparent url('../pic/eye-bow.png') no-repeat;
 	position: absolute;
-	top: 111px;
+	top: 71px;
 	right: 95px;
 	opacity: 0;
 	-webkit-transition-duration: 500ms;
 	-moz-transition-duration: 500ms;
 	transition-duration: 500ms;
-}
-
-#eye-left-bow{
-	height: 31px;
-	width: 46px;
-	background: transparent url('../pic/eye-bow.png') no-repeat;
-	position: absolute;
-	top: 111px;
-	right: 285px;
-	opacity: 0;
-	-webkit-transition-duration: 500ms;
-	-moz-transition-duration: 500ms;
-	transition-duration: 500ms;
-}
+}*/
 
 #eye-right-shine{
 	height: 45px;
 	width: 46px;
 	background: transparent url('../pic/eye-shine.png') no-repeat;
 	position: absolute;
-	top: 160px;
+	top: 80px;
 	right: 100px;
 	opacity: 0;
 	-webkit-transition-duration: 500ms;
@@ -183,31 +281,27 @@ body{
 	transition-duration: 500ms;
 }
 
-#eye-left-shine{
-	height: 45px;
-	width: 46px;
-	background: transparent url('../pic/eye-shine.png') no-repeat;
-	position: absolute;
-	top: 160px;
-	right: 290px;
-	opacity: 0;
-	-webkit-transition-duration: 500ms;
-	-moz-transition-duration: 500ms;
-	transition-duration: 500ms;
-}
 
 #mouth{
-	height: 86px;
+	height: 40px;
 	width: 266px;
-	background: transparent url('../pic/mouth.png') no-repeat;
+	background: transparent url('../pic/face.png') no-repeat;
 /*	margin: 50px auto;
 */	
 	position: absolute;
 	right: 68px;
-	top: 210px;
+	top: 130px;
 	
 	
 /*	position: absolute;
 	top: 280px;
 	right: 10%;*/
+}
+
+#typewriter{
+	width: 350px;
+	font-size: 14px;
+}
+#typewriter a{
+	text-decoration: underline;
 }

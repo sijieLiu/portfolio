@@ -7,7 +7,7 @@ $(document).ready(function(){
 		}
 	);
 	
-	var animateDuration = 1000;
+	var animateDuration = 500;
 	var debounce = function (func, threshold, execAsap) {
 		var timeout;
 
@@ -71,33 +71,29 @@ $(document).ready(function(){
 		return $(".navbar-nav li").hasClass("active");
 	}
 	
-	$(".navbar-nav li").hover(
-		function(e){	
-			// if(isContentShown()){		
-// 				showBunnyAtBottom();
-// 			}
-			
+	$("a, #typewriter").on("mouseover", function () {
 			if(!$(this).hasClass("active")){					
 	 			$("#eye-left-shine").css({opacity: 1, "transform": "scale(0.8,0.8)"});
 				$("#eye-right-shine").css({opacity: 1, "transform": "scale(0.8,0.8)"});
 			}
 			
-			$("#eye-left-bow").css({opacity: 1, top: "90px"});		
-			$("#eye-right-bow").css({opacity: 1});
-		},
-		function(e){	
+			$("#eye-left-bow").css({opacity: 0, top: "50px"});		
+			$("#eye-right-bow").css({opacity: 0});
+	    }).on("mouseout", function () {
  			$("#eye-left-shine").css({"transform": "scale(0.2,0.2)", opacity: 0});
 			$("#eye-right-shine").css({"transform": "scale(0.2,0.2)", opacity: 0});
-			$("#eye-left-bow").css({top: "111px", opacity: 0});
+			$("#eye-left-bow").css({top: "70px", opacity: 0});
 			$("#eye-right-bow").css({opacity: 0});
-			// if(isContentShown()){
-			// 	hideBunny();
-			// }
-		}
-	);
+	    });
+	
+	$("#face").click(function(){
+		$("#head-hit").fadeIn(10, function(){
+			$(this).fadeOut(250);
+		});
 		
+	});
 	/* content nav */
-	$(".navbar-nav li, .navbar-brand").click(function(){
+	$(".navbar-nav li, .navbar-brand").click(function(){		
 		if(!$(this).hasClass("active")) {
 			var id = $(this).find("a").data("id");
 			var isAnyContentShown = isContentShown();
@@ -110,7 +106,7 @@ $(document).ready(function(){
 						$(this).addClass("active");
 					}
 				});
-				showBunnyOnTop();
+				//showBunnyOnTop();
 				$(".navbar-nav li").removeClass("active");
 			}
 		
@@ -139,4 +135,41 @@ $(document).ready(function(){
 		}
 	})
 	
+	/*type writter*/
+	
+	var inputs = [
+					// "<p>Hey, I'm a tiny little block. <br/> I'll be watching you. </p>",
+					"<p>Hey, you are here! Wanna talk?<br>Email me at <a href='mailto:liusij87@gmail.com'>liusij87@gmail.com</a>.<p>",
+					"<p>Ok.. Who I am?<br>I'm Sijie Liu, a UX designer.</p>",
+					"<p>Wanna check out my work?<br>Click <a target='_blank' href='https://www.behance.net/sijieliu'>here</a>.</p>",
+					"<p>Wanna learn more about my experiences?<br>Check out my <a target='_blank' href='https://www.linkedin.com/profile/view?id=70408701'>LinkedIn</a>.</p>"
+				 ],
+	    inputsIndex = 0,
+		i = 0,
+	    isTag,
+	    text;
+
+	var type = function() {
+	    text = inputs[inputsIndex].slice(0, ++i);
+	    if (text === inputs[inputsIndex]) {
+			inputsIndex++;
+			i = 0;
+			if(inputsIndex == inputs.length){ // loop
+				inputsIndex = 0;
+			}
+	    	setTimeout(type, 3000);
+			return;
+	    }
+    
+	    document.getElementById('typewriter').innerHTML = text;
+
+	    var char = text.slice(-1);
+	    if( char === '<' ) isTag = true;
+	    if( char === '>' ) isTag = false;
+
+	    if (isTag) return type();
+	    setTimeout(type, 80);
+	};
+	
+	type();
 });
