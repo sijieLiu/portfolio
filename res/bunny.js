@@ -30,11 +30,17 @@ $(document).ready(function(){
 	  
 	$("body").mousemove(debounce(function(e){
 			var x = e.pageX;
+			var y = e.pageY;
 			var w = $( window ).width();
+			var h = $( window ).height();
 			var offset = 40 * (w -x) / w ;
+			var offsetY = 40 * (h - y) / h;
 		
 			$("#eye-left").css("right", offset + 245);
 			$("#eye-right").css("right", offset + 55);
+			
+			$("#face").css("left", offset/5);
+			$("#face").css("top", offsetY/5);
 		},
 		15)
 	);
@@ -139,23 +145,37 @@ $(document).ready(function(){
 	
 	var inputs = [
 					// "<p>Hey, I'm a tiny little block. <br/> I'll be watching you. </p>",
-					"<p>Hey, you are here! Wanna talk?<br>Email me at <a href='mailto:liusij87@gmail.com'>liusij87@gmail.com</a>.<p>",
-					"<p>Ok.. Who I am?<br>I'm Sijie Liu, a UX designer.</p>",
-					"<p>Wanna check out my work?<br>Click <a target='_blank' href='https://www.behance.net/sijieliu'>here</a>.</p>",
-					"<p>Wanna learn more about my experiences?<br>Check out my <a target='_blank' href='https://www.linkedin.com/profile/view?id=70408701'>LinkedIn</a>.</p>"
+					"<p>Hi there! <br>My name is Sijie Liu.</p>",
+					"<p>I design and develop digital products.</p>",
+					"<p>I love solving problems and creating delightful and inspirational experiences.</p>",
+					"<p>Wanna check out <br>my portfolio?<br/>Here you <a target='_blank' href='https://www.behance.net/sijieliu'>go</a>!</p>",
+					"<p>Thoughts? Questions? Ideas? <span style='text-decoration:line-through'>Spam?</span> <br/>Please email me at <br/><a href='mailto:liusij87@gmail.com'>liusij87@gmail.com</a>.</p>",
+					"<p>Let's stay connected! <br/>Here is my <a target='_blank' href='https://www.linkedin.com/profile/view?id=70408701'>LinkedIn</a>.</p>"					
 				 ],
 	    inputsIndex = 0,
 		i = 0,
 	    isTag,
 	    text,
 		timeOut;
+		
+		
 
 	var type = function() {
 		if(timeOut && $("#typewriter").is(":hover")){ // if hovering take another 2000 ms
-			setTimeout(type, 2000);
+			$("#nose").css("background-size", "40px 80px");
+			$("#nose").css("top", "110px");
+			setTimeout(type, 500);
 			return;
 		}
+		
+		
 		timeOut = null;
+		
+		/*nose animie*/
+		$("#nose").css("background-size", "40px");
+		$("#nose").css("top", "130px");
+				
+		
 	    text = inputs[inputsIndex].slice(0, ++i);
 	    if (text === inputs[inputsIndex]) {
 			inputsIndex++;
@@ -163,7 +183,7 @@ $(document).ready(function(){
 			if(inputsIndex == inputs.length){ // loop
 				inputsIndex = 0;
 			}
-	    	timeOut = setTimeout(type, 6000);
+	    	timeOut = setTimeout(type, 1500);
 			return;
 	    }
     
@@ -178,4 +198,43 @@ $(document).ready(function(){
 	};
 	
 	type();
+	
+	//background
+	
+	var backgroundURLs = [
+		'https://m1.behance.net/rendition/modules/88148657/hd/91109d7691c8b099377e7d6e8812dc9e.JPG', //mor wool
+		'https://m1.behance.net/rendition/modules/97179467/hd/99197e99c76004d34eb8935725557dc0.png', //endlessforms
+		'https://m1.behance.net/rendition/modules/124992195/hd/63949c289cdffbff9fd7affe9181a1d0.png', //ebay likes
+		'https://m1.behance.net/rendition/modules/84694977/hd/b86b2d0758a5351ccb1d97c6abfead12.png' //language game
+	
+		],
+		backgroundURLIndex = 0;
+	
+	var titles = [
+		"<a target='_blank' href='https://www.behance.net/gallery/12277729/Moments-of-reflection'><b>Moments Of Reflection</b> | Game Art</a>", //mor wool
+		"<a target='_blank' href='https://www.behance.net/gallery/14047469/Endlessforms-Evolving-3D-Objects-Web-Developement'><b>Endlessforms</b> | Interactive Evolving Design 3D</a>", //mor wool
+		"<a target='_blank' href='https://www.behance.net/gallery/17564423/eBay-Street-Product-Design'><b>eBay Street</b> | UX Design</a>", //mor wool
+		"<a target='_blank' href='https://www.behance.net/gallery/11755607/Language-Game-Poster-Design'><b>Language Game</b> | Graphic Design</a>", //mor wool
+		];
+	
+	var backgroundLoop = function(){ 
+	    setTimeout(function(){
+			if(backgroundURLIndex == backgroundURLs.length){
+				backgroundURLIndex = 0;
+			}
+			$("#bg_title").html(titles[backgroundURLIndex]);
+			$("#fullscreen_bg").css("background-image", "url("+backgroundURLs[backgroundURLIndex]+")");
+			backgroundURLIndex++;
+			
+			backgroundLoop();
+		}, 32000);
+	}
+	
+	$("#bg_title").html(titles[backgroundURLs.length-1]);
+	
+	$("#fullscreen_bg").css("background-image", "url("+backgroundURLs[backgroundURLs.length-1]+")");
+
+	backgroundLoop();
+	
+	
 });
