@@ -56,8 +56,8 @@ a:hover{
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 	text-align: center;
 	padding-top: 140px;
-	z-index: 999;
-	position: relative;
+/*	z-index: 999;
+*/	position: relative;
 
 }
 .main h1{
@@ -131,6 +131,12 @@ a:hover{
 	user-select: none;
 	
 	display: none;
+	
+	-webkit-transition-duration: 1000ms;
+	-moz-transition-duration: 1000ms;
+	transition-duration: 1000ms;
+	
+	cursor: pointer;
 	
 	/*background-image: url(../pic/subtle_dots_@2X.png);
 	border-bottom: 32px solid #000*/
@@ -218,7 +224,7 @@ a:hover{
 	background: transparent url('../pic/eye-shine.png') no-repeat;
 	position: absolute;
 	top: 80px;
-	right: 290px;
+	right: 275px;
 	opacity: 0;
 	-webkit-transition-duration: 500ms;
 	-moz-transition-duration: 500ms;
@@ -249,7 +255,7 @@ a:hover{
 	background: transparent url('../pic/eye-shine.png') no-repeat;
 	position: absolute;
 	top: 80px;
-	right: 100px;
+	right: 85px;
 	opacity: 0;
 	-webkit-transition-duration: 500ms;
 	-moz-transition-duration: 500ms;
@@ -319,11 +325,11 @@ a:hover{
 /*	filter:blur(8px);
 	-webkit-filter: blur(8px);*/
 	
-	-webkit-transition: background-image 5s ease-out;
-	-moz-transition: background-image 5s ease-out;
-	-ms-transition: background-image 5s ease-out;
-	-o-transition: background-image 5s ease-out;
-	transition: background-image 5s ease-out;
+	-webkit-transition: background-image 1s ease-out;
+	-moz-transition: background-image 1s ease-out;
+	-ms-transition: background-image 1s ease-out;
+	-o-transition: background-image 1s ease-out;
+	transition: background-image 1s ease-out;
 	
 }
 

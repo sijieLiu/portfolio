@@ -33,14 +33,22 @@ $(document).ready(function(){
 			var y = e.pageY;
 			var w = $( window ).width();
 			var h = $( window ).height();
-			var offset = 40 * (w -x) / w ;
-			var offsetY = 40 * (h - y) / h;
+			var offset = 40 * (w/2 -x) / w ;
+			var offsetY = 40 * (h/2 - y) / h;
 		
-			$("#eye-left").css("right", offset + 245);
-			$("#eye-right").css("right", offset + 55);
+			$("#eye-left").css("right", offset + 265);
+			$("#eye-right").css("right", offset + 75);
 			
-			$("#face").css("left", offset/5);
-			$("#face").css("top", offsetY/5);
+			// $("#face").css("left", offset/5);
+			// $("#face").css("top", offsetY/5);
+			
+			$("#fullscreen_bg").css("background-position-y",   50-offsetY/2 + "%");
+			$("#fullscreen_bg").css("background-position-x",  50-offset/2 + "%");
+			
+
+			$(".sjbody").css("bottom",  offsetY/2  - 20);			
+			$(".sjbody").css("margin-left", -567 - offset/2 + 20);
+			
 		},
 		15)
 	);
@@ -77,7 +85,7 @@ $(document).ready(function(){
 		return $(".navbar-nav li").hasClass("active");
 	}
 	
-	$("a, #typewriter").on("mouseover", function () {
+	$("a, #typewriter, #bg_title").on("mouseover", function () {
 			if(!$(this).hasClass("active")){					
 	 			$("#eye-left-shine").css({opacity: 1, "transform": "scale(0.8,0.8)"});
 				$("#eye-right-shine").css({opacity: 1, "transform": "scale(0.8,0.8)"});
@@ -92,10 +100,23 @@ $(document).ready(function(){
 			$("#eye-right-bow").css({opacity: 0});
 	    });
 	
-	$("#face").click(function(){
+	$(".sjbody").click(function(){
 		$("#head-hit").fadeIn(10, function(){
-			$(this).fadeOut(250);
+			$(this).fadeOut(250,function(){
+				if(!$(".sjbody").hasClass("down")){
+				$(".sjbody").height("380px");	
+				$(".sjbody").addClass("down");
+				}else{
+				$(".sjbody").height("780px");	
+				$(".sjbody").removeClass("down");
+				}
+			});
+			
+			
 		});
+		
+		
+		
 		
 	});
 	/* content nav */
@@ -161,20 +182,13 @@ $(document).ready(function(){
 		
 
 	var type = function() {
-		if(timeOut && $("#typewriter").is(":hover")){ // if hovering take another 2000 ms
-			$("#nose").css("background-size", "40px 80px");
-			$("#nose").css("top", "110px");
+		
+		if($("#typewriter").is(":hover")){ // if hovering take another 500 ms
 			setTimeout(type, 500);
 			return;
-		}
-		
+		}	
 		
 		timeOut = null;
-		
-		/*nose animie*/
-		$("#nose").css("background-size", "40px");
-		$("#nose").css("top", "130px");
-				
 		
 	    text = inputs[inputsIndex].slice(0, ++i);
 	    if (text === inputs[inputsIndex]) {
@@ -183,7 +197,7 @@ $(document).ready(function(){
 			if(inputsIndex == inputs.length){ // loop
 				inputsIndex = 0;
 			}
-	    	timeOut = setTimeout(type, 1500);
+	    	timeOut = setTimeout(type, 2500);
 			return;
 	    }
     
@@ -199,11 +213,20 @@ $(document).ready(function(){
 	
 	type();
 	
+	$("#typewriter").hover(function() {
+		debugger;
+		$("#nose").css("background-size", "40px 80px");
+		$("#nose").css("top", "110px");
+	}, function(){
+		$("#nose").css("background-size", "40px");
+		$("#nose").css("top", "130px");
+	});
+	
 	//background
 	
 	var backgroundURLs = [
-		'https://m1.behance.net/rendition/modules/88148657/hd/91109d7691c8b099377e7d6e8812dc9e.JPG', //mor wool
-		'https://m1.behance.net/rendition/modules/97179467/hd/99197e99c76004d34eb8935725557dc0.png', //endlessforms
+		'https://m1.behance.net/rendition/modules/88148653/hd/233d7f68836829526247a7a296b079e6.JPG', //mor wool
+		'https://m1.behance.net/rendition/modules/122446477/disp/6bc40dac15c8f8649199e5f68d7b4584.jpeg', //endlessforms
 		'https://m1.behance.net/rendition/modules/124992195/hd/63949c289cdffbff9fd7affe9181a1d0.png', //ebay likes
 		'https://m1.behance.net/rendition/modules/84694977/hd/b86b2d0758a5351ccb1d97c6abfead12.png' //language game
 	
@@ -227,7 +250,7 @@ $(document).ready(function(){
 			backgroundURLIndex++;
 			
 			backgroundLoop();
-		}, 32000);
+		}, 10000);
 	}
 	
 	$("#bg_title").html(titles[backgroundURLs.length-1]);
