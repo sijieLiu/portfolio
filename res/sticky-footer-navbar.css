@@ -168,7 +168,7 @@ a:hover{
 	position: relative;
 	overflow: auto;
 	margin: auto;
-	margin-top: 130px;
+	margin-top: 200px;
 	height:420px;
 	-moz-transform: translateY(-30%);
 	border-bottom: none;
@@ -336,5 +336,5 @@ a:hover{
 	position: fixed;
 	right: 20px;
 	bottom: 20px;
-	z-index: -99;
+	z-index: 1;
 }
